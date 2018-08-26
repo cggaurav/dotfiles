@@ -7,10 +7,15 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="cloud"
+# muse
+# ys
 
 # Example aliases
-# alias zshconfig="stt ~/.zshrc"
-# alias ohmyzsh="stt ~/.oh-my-zsh"
+alias zshconfig="subl ~/.zshrc"
+alias ohmyzsh="subl ~/.oh-my-zsh"
+alias bashrc="subl ~/.bashrc"
+alias dm="docker-machine"
+alias dc="docker-compose"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -41,20 +46,18 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git ruby lighthouse)
-plugins=(git osx last-working-dir redis-cli sublime bower mercurial)
+plugins=(git last-working-dir redis-cli sublime bower sublime coffee brew git-flow github grunt node npm osx pip pow powder sublime rvm wd jsontools)
 # plugins=(autojump bower brew cap cloudapp coffee compleat custom-aliases dirpersist docker encode64 extract fasd gem git git-flow github grunt history-substring-search node npm osx per-directory-history pip pow powder rails redis-cli ruby rvm ssh-agent sublime supervisor terminalapp tmux urltools vagrant vi-mode web-search wd)
 
 # Customize to your needs...
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh" # This loads NVM
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 source $ZSH/oh-my-zsh.sh
+source /Users/cggaurav/.rvm/scripts/rvm
 
 # Customize to your needs...
-# PATH=$PATH:$HOME/.rvm/binexport PATH=$PATH:/Users/cggaurav/.rvm/gems/ruby-1.9.3-p194/bin:/Users/cggaurav/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/cggaurav/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/cggaurav/.rvm/bin:/usr/bin/local:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/cggaurav/.rvm/bin
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -65,26 +68,38 @@ function settitle {
 	echo -ne "\e]2;$title_lab\a"
 }
 
-function cd() { 
-	builtin cd "$@" && settitle; 
+function cd() {
+	builtin cd "$@" && settitle;
 }
 
+
 # Example aliases
-alias zshrc="stt ~/.zshrc"
-alias ohmyzsh="stt ~/.oh-my-zsh"
-alias apps="cd /Users/cggaurav/Projects/apps"
+alias zshrc="subl ~/.zshrc"
+alias ohmyzsh="subl ~/.oh-my-zsh"
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
+alias pg_status="pg_ctl -D /usr/local/var/postgres status"
+alias devconf="subl  ~/.teamocil"
 
 # Remove Autocorrect
-alias meteor='nocorrect meteor' 
-
+alias meteor='nocorrect meteor'
+alias dev='itermocil'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:/usr/local/sbin:$PATH"
 settitle
-alias wd='. /Users/cggaurav/bin/wd/wd.sh'
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export PATH='/usr/local/bin;usr/local/lib':$PATH
 export ANDROID_HOME=/usr/local/opt/android-sdk
+export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
+export CURL_CA_BUNDLE=/usr/local/etc/openssl/cert.pem
+export PGHOST=localhost
+export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
+
+
+[[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc" # This loads BASHRC + other aliases
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
